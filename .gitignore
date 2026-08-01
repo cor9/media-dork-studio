@@ -1,0 +1,16 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.coverage
+htmlcov/
+.venv/
+venv/
+.DS_Store
+.idea/
+.vscode/
+dist/
+build/
+media-dork-results.csv
+media-dork-results.json
+media-dork-results.txt

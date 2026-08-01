@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "media-dork-studio"
+version = "1.0.0"
+description = "A responsible desktop query builder for discovering publicly indexed media files."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "cor9" }]
+dependencies = ["customtkinter>=5.2.2,<6"]
+
+[project.scripts]
+media-dork-studio = "media_dork_studio.gui:main"
+
+[tool.setuptools.packages.find]
+include = ["media_dork_studio*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
