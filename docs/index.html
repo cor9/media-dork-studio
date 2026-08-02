@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DorkForge — AI Media &amp; Asset Intelligence</title>
+  <meta name="description" content="AI-powered Google dork query builder: intent analysis, smart presets, target matrix, LLM query optimizer. 100% client-side.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <h1>DorkForge</h1>
+      <span class="tagline">AI-Powered Smart Media &amp; Asset Intelligence</span>
+    </div>
+    <nav class="tabs">
+      <button class="tab active" data-tab="builder">Query Builder</button>
+      <button class="tab" data-tab="output">Raw String Output</button>
+      <button class="tab" data-tab="results">Results Engine</button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ================= TAB 1: QUERY BUILDER ================= -->
+    <section id="tab-builder" class="tabpage active">
+      <div class="card">
+        <h2>Intent Assistant</h2>
+        <p class="hint">Describe what you're looking for in plain English — get optimal
+          keywords, file types, and server footprints auto-applied below.</p>
+        <div class="row">
+          <input id="intent-input" class="grow" type="text"
+                 placeholder='e.g. "uncompressed high-resolution nature video clips for editing"'>
+          <select id="provider">
+            <option>Offline Knowledge Base</option>
+            <option>OpenAI</option>
+            <option>Ollama (local)</option>
+          </select>
+          <button id="suggest-btn" class="primary">Suggest Terms</button>
+        </div>
+        <div class="row small">
+          <label>Model <input id="model-input" type="text" placeholder="model"></label>
+          <span id="apikey-row">
+            <label>API key <input id="apikey-input" type="password"
+                   placeholder="sk-… (stored only in your browser)"></label>
+          </span>
+          <span id="intent-status" class="status"></span>
+        </div>
+      </div>
+
+      <div class="cols">
+        <div class="card col">
+          <h2>Smart Preset Category</h2>
+          <select id="category-select"></select>
+          <label class="slider-row">Keyword breadth
+            <input type="range" id="breadth" min="0" max="6" step="1" value="3">
+            <span id="breadth-val">3</span>
+          </label>
+          <h2>Suggested Keywords</h2>
+          <div id="keyword-list" class="checklist"></div>
+          <h2>File Extensions</h2>
+          <div id="ext-list" class="checklist twocol"></div>
+        </div>
+
+        <div class="card col">
+          <h2>Live Target Matrix</h2>
+          <div id="vector-list" class="checklist"></div>
+          <label class="check clean"><input type="checkbox" id="clean-toggle" checked>
+            Smart Noise Reduction ("Clean Results")</label>
+          <div id="clean-hint" class="hint indent"></div>
+          <div class="extras">
+            <label>Extra keywords <input id="extra-keywords" type="text" placeholder="comma, separated, terms"></label>
+            <label>Extra extensions <input id="extra-exts" type="text" placeholder="e.g. m2ts, r3d"></label>
+            <label>Extra sites <input id="extra-sites" type="text" placeholder="e.g. drive.google.com"></label>
+            <label>Extra exclusions <input id="extra-exclusions" type="text" placeholder="e.g. youtube, vimeo"></label>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Live Dork Preview</h2>
+        <pre id="preview" class="dork"></pre>
+      </div>
+    </section>
+
+    <!-- ================= TAB 2: RAW STRING OUTPUT ================= -->
+    <section id="tab-output" class="tabpage">
+      <div class="card">
+        <h2>Generated Dork String</h2>
+        <pre id="output" class="dork"></pre>
+        <div class="row">
+          <button id="copy-btn">Copy String</button>
+          <button id="open-btn" class="primary">Open in Google</button>
+        </div>
+        <p id="validation" class="status"></p>
+      </div>
+      <div class="card hidden" id="llm-card">
+        <h2>LLM-Optimized String <span class="hint">(ready for execution)</span></h2>
+        <pre id="llm-output" class="dork"></pre>
+        <button id="copy-llm-btn">Copy LLM String</button>
+      </div>
+    </section>
+
+    <!-- ================= TAB 3: RESULTS ENGINE ================= -->
+    <section id="tab-results" class="tabpage">
+      <div class="card">
+        <h2>Results Engine</h2>
+        <p class="hint">Paste URLs (one per line) or a raw search-API JSON response.
+          Extraction &amp; export run fully in your browser. Live HTTP status checks
+          (200/404) are available in the desktop app — browsers block cross-origin
+          requests (CORS).</p>
+        <textarea id="results-input" rows="7"
+                  placeholder='https://example.com/file.mp4 — or — {"organic_results":[{"link":"…"}]}'></textarea>
+        <div class="row">
+          <button id="extract-btn" class="primary">Extract URLs</button>
+          <button id="export-json">Export .JSON</button>
+          <button id="export-csv">Export .CSV</button>
+          <button id="export-txt">Export .TXT</button>
+        </div>
+        <ul id="url-list" class="urllist"></ul>
+        <p id="results-status" class="status"></p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Runs 100% client-side · your API key is stored only in your browser and sent
+    only to OpenAI · operators follow the 2026 standard (no ~, + or daterange:)
+  </footer>
+
+  <script src="knowledge_base.js"></script>
+  <script src="builder.js"></script>
+  <script src="llm.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

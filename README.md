@@ -10,6 +10,17 @@ CAPTCHAs.
 > content you are authorized to access. A search result being indexed does not
 > grant permission to access, download, reuse, or redistribute it.
 
+## DorkForge (2026 upgrade) + live web app
+
+This repo now also contains **DorkForge**, the AI-powered upgrade of the query
+builder: intent analysis, smart presets, a live target matrix, an optional
+OpenAI/Ollama query optimizer, and a fully client-side web version.
+
+- **Live web app:** <https://gdorks.space> (served from `docs/` via GitHub Pages)
+- **Docs:** see [DORKFORGE.md](DORKFORGE.md)
+- Desktop entry point: `python main_gui.py` · Web source: `docs/` ·
+  Regenerate the web knowledge base with `python3 tools/export_kb.py`
+
 ## Features
 
 - Live, sanitized Google dork query preview

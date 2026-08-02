@@ -14,3 +14,6 @@ build/
 media-dork-results.csv
 media-dork-results.json
 media-dork-results.txt
+
+# DorkForge secrets
+.env

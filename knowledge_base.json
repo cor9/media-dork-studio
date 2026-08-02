@@ -1,0 +1,79 @@
+{
+  "meta": {
+    "name": "DorkForge Knowledge Base",
+    "version": "1.0.0",
+    "description": "Offline smart-preset lookup for the AI-Powered Smart Media & Asset Intelligence Tool.",
+    "operator_policy": {
+      "valid": ["site:", "filetype:", "ext:", "intitle:", "allintitle:", "inurl:", "allinurl:", "intext:", "\"\"", "-", "OR", "|", "AND", "()"],
+      "deprecated": ["~", "+", "daterange:"]
+    }
+  },
+  "categories": {
+    "audio": {
+      "label": "Audio / Podcasts / Stems",
+      "keywords": ["\"index of\"", "parent directory", "\"multitrack\"", "\"stems\"", "\"lossless\""],
+      "extensions": ["flac", "wav", "aac", "mp3", "m4a", "aiff"],
+      "inurl": ["ftp", "music", "audio"],
+      "intitle": [],
+      "sites": ["archive.org", "s3.amazonaws.com"],
+      "exclusions": [],
+      "recommended_vectors": ["open_directories", "ftp_servers", "web_archives", "cdn_storage"],
+      "topic_hints": ["audio", "music", "podcast", "stem", "stems", "multitrack", "flac", "wav", "lossless", "song", "album", "mix", "sample", "acapella", "sound"]
+    },
+    "video": {
+      "label": "Video / Movies / Raw Footage",
+      "keywords": ["intitle:\"index of/\"", "\"b-roll\"", "\"1080p\"", "\"4k\"", "\"raw\"", "prores"],
+      "extensions": ["mp4", "mkv", "mov", "avi", "webm", "m4v"],
+      "inurl": ["video", "footage", "movies"],
+      "intitle": [],
+      "sites": [],
+      "exclusions": ["html", "htm", "php", "asp", "jsp", "cf", "cgi"],
+      "recommended_vectors": ["open_directories", "cdn_storage", "media_servers"],
+      "topic_hints": ["video", "movie", "film", "footage", "b-roll", "broll", "4k", "1080p", "clip", "clips", "raw", "prores", "documentary", "nature", "editing", "uncompressed", "high-resolution"]
+    },
+    "documents": {
+      "label": "Documents / Datasets / Books",
+      "keywords": ["\"unprotected\"", "intitle:\"index of\"", "\"confidential\"", "\"dataset\""],
+      "extensions": ["pdf", "epub", "mobi", "csv", "json", "xlsx"],
+      "inurl": ["docs", "documents", "ebooks", "data"],
+      "intitle": [],
+      "sites": [],
+      "exclusions": [],
+      "recommended_vectors": ["open_directories", "educational", "web_archives", "cdn_storage"],
+      "topic_hints": ["book", "ebook", "pdf", "document", "dataset", "data", "csv", "report", "paper", "epub", "research", "spreadsheet", "manual", "thesis"]
+    }
+  },
+  "vectors": {
+    "open_directories": {
+      "label": "Open Directories",
+      "sites": [],
+      "footprints": ["intitle:\"index of /\"", "\"parent directory\""]
+    },
+    "cdn_storage": {
+      "label": "Cloud Storage & CDN (S3 / GCS / Spaces / Azure / R2)",
+      "sites": ["s3.amazonaws.com", "storage.googleapis.com", "digitaloceanspaces.com", "blob.core.windows.net", "r2.dev"],
+      "footprints": []
+    },
+    "media_servers": {
+      "label": "Media Servers (Plex / Emby / h5ai)",
+      "sites": [],
+      "footprints": ["intitle:\"Plex\"", "inurl:32400", "intitle:\"Emby\"", "inurl:8096", "\"powered by h5ai\""]
+    },
+    "ftp_servers": {
+      "label": "FTP Servers",
+      "sites": [],
+      "footprints": ["inurl:ftp", "intitle:\"index of\" inurl:ftp"]
+    },
+    "educational": {
+      "label": "Educational (.edu)",
+      "sites": [".edu"],
+      "footprints": []
+    },
+    "web_archives": {
+      "label": "Web Archives",
+      "sites": ["archive.org"],
+      "footprints": []
+    }
+  },
+  "clean_results_exclusions": ["html", "htm", "php", "asp", "jsp", "cgi", "index.php"]
+}
